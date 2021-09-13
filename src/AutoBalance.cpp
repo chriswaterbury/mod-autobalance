@@ -336,7 +336,7 @@ class AutoBalance_UnitScript : public UnitScript
         if ((attacker->IsHunterPet() || attacker->IsPet() || attacker->IsSummon()) && attacker->IsControlledByPlayer())
             return damage;
 
-        return damage * damageMultiplier;
+        return damage;
     }
 };
 
@@ -727,7 +727,7 @@ public:
 
         scaledMana = round(baseMana * creatureABInfo->ManaMultiplier);
 
-        float damageMul = defaultMultiplier * globalRate * damageMultiplier;
+        float damageMul = 1.0f;
 
         // Can not be less then Min_D_Mod
         if (damageMul <= MinDamageModifier)
