@@ -753,7 +753,7 @@ public:
             damageMul *= newDmgBase/origDmgBase;
         }
 
-        creatureABInfo->ArmorMultiplier = defaultMultiplier * globalRate * armorMultiplier;
+        creatureABInfo->ArmorMultiplier = 1.0f;
         uint32 newBaseArmor= round(creatureABInfo->ArmorMultiplier * (useDefStats || !LevelScaling || skipLevel ? origCreatureStats->GenerateArmor(creatureTemplate) : creatureStats->GenerateArmor(creatureTemplate)));
 
         if (!sABScriptMgr->OnBeforeUpdateStats(creature, scaledHealth, scaledMana, damageMul, newBaseArmor))
