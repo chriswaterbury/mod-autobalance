@@ -526,9 +526,9 @@ public:
         uint32 maxNumberOfPlayers = instanceMap->GetMaxPlayers();
         int forcedNumPlayers = GetForcedNumPlayers(creatureTemplate->Entry);
 
-        if (forcedNumPlayers > 0)
-            maxNumberOfPlayers = forcedNumPlayers; // Force maxNumberOfPlayers to be changed to match the Configuration entries ForcedID2, ForcedID5, ForcedID10, ForcedID20, ForcedID25, ForcedID40
-        else if (forcedNumPlayers == 0)
+        // if (forcedNumPlayers > 0)
+        //     maxNumberOfPlayers = forcedNumPlayers; // Force maxNumberOfPlayers to be changed to match the Configuration entries ForcedID2, ForcedID5, ForcedID10, ForcedID20, ForcedID25, ForcedID40
+        if (forcedNumPlayers == 0)
             return; // forcedNumPlayers 0 means that the creature is contained in DisabledID -> no scaling
 
         AutoBalanceCreatureInfo *creatureABInfo=creature->CustomData.GetDefault<AutoBalanceCreatureInfo>("AutoBalanceCreatureInfo");
