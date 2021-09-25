@@ -729,29 +729,30 @@ public:
 
         float damageMul = 1.0f;
 
+        // Disable damage scaling entirely
         // Can not be less then Min_D_Mod
-        if (damageMul <= MinDamageModifier)
-        {
-            damageMul = MinDamageModifier;
-        }
+        // if (damageMul <= MinDamageModifier)
+        // {
+        //     damageMul = MinDamageModifier;
+        // }
 
-        if (!useDefStats && LevelScaling && !skipLevel) {
-            float origDmgBase = origCreatureStats->GenerateBaseDamage(creatureTemplate);
-            float newDmgBase = 0;
-            if (level <= 60)
-                newDmgBase=creatureStats->BaseDamage[0];
-            else if(level <= 70)
-                newDmgBase=creatureStats->BaseDamage[1];
-            else {
-                newDmgBase=creatureStats->BaseDamage[2];
-                // special increasing for end-game contents
-                if (LevelEndGameBoost && !creature->GetMap()->IsRaid()) {
-                    newDmgBase *= creatureABInfo->selectedLevel >= 75 && originalLevel < 75 ? float(creatureABInfo->selectedLevel-70) * 0.3f : 1;
-                }
-            }
+        // if (!useDefStats && LevelScaling && !skipLevel) {
+        //     float origDmgBase = origCreatureStats->GenerateBaseDamage(creatureTemplate);
+        //     float newDmgBase = 0;
+        //     if (level <= 60)
+        //         newDmgBase=creatureStats->BaseDamage[0];
+        //     else if(level <= 70)
+        //         newDmgBase=creatureStats->BaseDamage[1];
+        //     else {
+        //         newDmgBase=creatureStats->BaseDamage[2];
+        //         // special increasing for end-game contents
+        //         if (LevelEndGameBoost && !creature->GetMap()->IsRaid()) {
+        //             newDmgBase *= creatureABInfo->selectedLevel >= 75 && originalLevel < 75 ? float(creatureABInfo->selectedLevel-70) * 0.3f : 1;
+        //         }
+        //     }
 
-            damageMul *= newDmgBase/origDmgBase;
-        }
+        //     damageMul *= newDmgBase/origDmgBase;
+        // }
 
         creatureABInfo->ArmorMultiplier = 1.0f;
         uint32 newBaseArmor= round(creatureABInfo->ArmorMultiplier * (useDefStats || !LevelScaling || skipLevel ? origCreatureStats->GenerateArmor(creatureTemplate) : creatureStats->GenerateArmor(creatureTemplate)));
